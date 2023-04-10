@@ -2,7 +2,7 @@
 
 [project]
 name = "BoneFlet"
-version = "0.1.0dev0"
+version = "0.1.0dev1"
 description = ""
 authors = [
     {name = "六个骨头", email = "2742392377@qq.com"},
