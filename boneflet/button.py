@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# _*_ coding: utf-8 _*_
-# @Time : 2023/1/18 18:13
-# @Author : Rongrui Zhan
-# @desc : 本代码未经授权禁止商用
 from __future__ import annotations
 from typing import TYPE_CHECKING
 import flet
@@ -38,14 +33,12 @@ class BoneButton(UserControl):
             on_click: Callable = lambda _: None
     ):
         super().__init__()
-        self.icon = icon
-        self.text = text
         self.size = size
 
-        if self.text is None:
-            self.control = flet.IconButton(content=flet.Icon(self.icon, size=size), scale=scale)
-        elif self.icon is None:
-            self.control = flet.TextButton(content=flet.Text(self.text, size=size), scale=scale)
+        if text is None:
+            self.control = flet.IconButton(content=flet.Icon(icon, size=size), scale=scale)
+        elif icon is None:
+            self.control = flet.TextButton(content=flet.Text(text, size=size), scale=scale)
         else:
             raise ValueError("You should use ElevatedButton")
         self.control.height = height
@@ -65,6 +58,23 @@ class BoneButton(UserControl):
 
     def build(self):
         return self.control
+
+    @property
+    def text(self):
+        return self.control.text
+    
+    
+    @text.setter
+    def text(self, value):
+        self.control = flet.TextButton(content=flet.Text(value, size=self.size), scale=self.scale)
+    
+    @property
+    def icon(self):
+        return self.control.icon
+    
+    @icon.setter
+    def icon(self, value):
+        self.control = flet.IconButton(content=flet.Icon(value, size=self.size), scale=self.scale)
 
     @property
     def style(self) -> ButtonStyle:
