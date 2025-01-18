@@ -66,12 +66,17 @@ class Event(Registrable):
             action()
 
 
+@dataclass
+class ScreenState:
+    visible: bool = True
+
+
 @register
 class Screen(Registrable):
     id = "screen.base"
 
-    def __init__(self):
-        self.visible = True
+    def __init__(self, state: ScreenState=None):
+        self.state = state
 
     def build(self):
         raise NotImplementedError

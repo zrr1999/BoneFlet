@@ -1,16 +1,20 @@
-[tool.pdm]
-
 [project]
 name = "BoneFlet"
-version = "0.1.0dev1"
+dynamic = ["version"]
 description = ""
 authors = [
-    {name = "六个骨头", email = "2742392377@qq.com"},
+    {name = "Rongrui Zhan", email = "2742392377@qq.com"},
 ]
-dependencies = []
+dependencies = [
+    "flet>=0.7.4",
+]
 requires-python = ">=3.9"
 readme = "README.md"
 license = {text = "MIT"}
+
+[tool.pdm.version]
+source = "file"
+path = "boneflet/__init__.py"
 
 [build-system]
 requires = ["pdm-backend"]
